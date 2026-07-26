@@ -22,7 +22,7 @@ connectDB().then(() => {
 });
 
 // Middleware
-app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(cors({ origin: 'https://air-dream.vercel.app' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
