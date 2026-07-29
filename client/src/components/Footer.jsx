@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaFacebookF, FaTwitter, FaInstagram, FaPlane } from 'react-icons/fa';
+import { FaFacebookF, FaTwitter, FaInstagram, FaPlane, FaMapMarkerAlt } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -15,6 +15,10 @@ const Footer = () => {
             </Link>
             <p className="text-sm mb-4">Contact our Travel agent for customized holiday packages and visa assistance.</p>
             <div className="space-y-2 text-sm">
+              <p className="flex items-start gap-2">
+                <FaMapMarkerAlt className="text-primary mt-1 flex-shrink-0" />
+                <span>Hor Al Anz, Deira, Dubai, United Arab Emirates</span>
+              </p>
               <p><strong>Office:</strong> Mon-Fri 9:30 AM - 7:00 PM</p>
               <p><strong>Phone:</strong> +971 588338927</p>
               <p><strong>Email:</strong> airdreamtraveltourism@gmail.com</p>
@@ -49,12 +53,20 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Newsletter / Map placeholder */}
+          {/* Map */}
           <div>
             <h4 className="text-white font-bold text-lg mb-4">Visit Us</h4>
-            <div className="w-full h-32 bg-gray-800 rounded-lg overflow-hidden border border-gray-700">
-               {/* Map placeholder */}
-               <div className="w-full h-full bg-gray-700 flex items-center justify-center text-xs text-gray-400">Dubai, UAE Map</div>
+            <div className="w-full h-48 md:h-32 rounded-lg overflow-hidden border border-gray-700">
+              <iframe
+                title="Air Dream Location - Hor Al Anz, Deira, Dubai"
+                src="https://maps.google.com/maps?q=Hor%20Al%20Anz%2C%20Deira%2C%20Dubai%2C%20United%20Arab%20Emirates&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </div>
         </div>
