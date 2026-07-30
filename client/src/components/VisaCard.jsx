@@ -38,9 +38,9 @@ const VisaCard = ({ visa }) => {
         <div className="text-[10px] text-gray-400 font-semibold mb-1">STARTING PRICE</div>
         <div className="flex justify-center items-end gap-2">
           {originalPrice && (
-            <span className="text-sm text-gray-400 line-through mb-1">AED {originalPrice}</span>
+            <span className="text-sm text-gray-400 line-through mb-1">INR {originalPrice}</span>
           )}
-          <span className="text-2xl font-black text-dark">AED {price}</span>
+          <span className="text-2xl font-black text-dark">INR {price}</span>
         </div>
       </div>
       

@@ -20,7 +20,7 @@ const tourSchema = new mongoose.Schema({
   },
   currency: {
     type: String,
-    default: 'AED'
+    default: 'INR'
   },
   duration: {
     days: Number,

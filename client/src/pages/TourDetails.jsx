@@ -98,8 +98,8 @@ const TourDetails = () => {
               <div className="mb-6">
                 <p className="text-sm text-gray-500 uppercase tracking-wider font-semibold mb-1">Starting From</p>
                 <div className="flex items-end gap-3">
-                  {tour.originalPrice && <span className="text-xl text-gray-400 line-through">AED {tour.originalPrice}</span>}
-                  <span className="text-4xl font-black text-dark">AED {tour.price}</span>
+                  {tour.originalPrice && <span className="text-xl text-gray-400 line-through">INR {tour.originalPrice}</span>}
+                  <span className="text-4xl font-black text-dark">INR {tour.price}</span>
                 </div>
                 <p className="text-xs text-gray-400 mt-1">Per Person</p>
               </div>

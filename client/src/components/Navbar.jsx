@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaPlane, FaBars, FaTimes, FaUserShield } from 'react-icons/fa';
+import { FaBars, FaTimes, FaUserShield } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
@@ -31,7 +31,7 @@ const Navbar = () => {
     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-dark/95 backdrop-blur-md shadow-lg py-3' : 'bg-dark/50 backdrop-blur-sm py-5'}`}>
       <div className="container mx-auto px-4 md:px-8 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-2 text-white font-bold text-2xl tracking-wide group">
-          <FaPlane className="text-primary group-hover:rotate-45 transition-transform duration-300" />
+          <img src="/images/logo.jpg" alt="Air Dream" className="h-10 w-10 rounded-full object-cover border border-primary/30 group-hover:border-primary transition-colors duration-300" />
           <span>Air Dream</span>
         </Link>
 
@@ -75,7 +75,7 @@ const Navbar = () => {
           >
             <div className="flex justify-between items-center p-5 border-b border-gray-800">
               <span className="text-white font-bold text-xl flex items-center gap-2">
-                <FaPlane className="text-primary" /> Air Dream
+                <img src="/images/logo.jpg" alt="Air Dream" className="h-8 w-8 rounded-full object-cover border border-primary/30" /> Air Dream
               </span>
               <button className="text-white p-2" onClick={() => setIsOpen(false)}>
                 <FaTimes size={24} />

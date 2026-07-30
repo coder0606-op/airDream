@@ -46,9 +46,9 @@ const TourCard = ({ tour }) => {
           <div>
             <div className="text-xs text-gray-400 mb-1">STARTING FROM</div>
             {originalPrice && (
-              <div className="text-sm text-gray-400 line-through">AED {originalPrice}</div>
+              <div className="text-sm text-gray-400 line-through">INR {originalPrice}</div>
             )}
-            <div className="text-xl font-black text-dark">AED {price}</div>
+            <div className="text-xl font-black text-dark">INR {price}</div>
             <div className="text-[10px] font-semibold text-gray-500 tracking-wider">PER PERSON</div>
           </div>
           <Link to={`/tours/${_id || 1}`} className="text-primary font-semibold hover:text-primary-dark transition-colors text-sm">

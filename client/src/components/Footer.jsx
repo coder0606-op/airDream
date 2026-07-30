@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaFacebookF, FaTwitter, FaInstagram, FaPlane, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaFacebookF, FaTwitter, FaInstagram, FaMapMarkerAlt } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <Link to="/" className="flex items-center gap-2 text-white font-bold text-2xl tracking-wide mb-4">
-              <FaPlane className="text-primary" />
+              <img src="/images/logo.jpg" alt="Air Dream" className="h-10 w-10 rounded-full object-cover border border-primary/30" />
               <span>Air Dream</span>
             </Link>
             <p className="text-sm mb-4">Contact our Travel agent for customized holiday packages and visa assistance.</p>
