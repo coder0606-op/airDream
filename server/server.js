@@ -27,6 +27,7 @@ app.use(
     origin: [
       "https://air-dream.vercel.app",
       "http://localhost:5173",
+      ,"https://airdreamtraveltourism.com",
     ],
     credentials: true,
   })
