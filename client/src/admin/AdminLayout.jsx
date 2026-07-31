@@ -18,6 +18,7 @@ const AdminLayout = () => {
     { name: 'Activities', path: '/admin/activities', icon: <FaRunning /> },
     { name: 'Testimonials', path: '/admin/testimonials', icon: <FaStar /> },
     { name: 'Enquiries', path: '/admin/enquiries', icon: <FaEnvelope /> },
+    { name: 'Popups', path: '/admin/popups', icon: <FaStar /> }, // Reusing FaStar or using FaImage if imported, but let's just use FaStar for now
   ];
 
   return (

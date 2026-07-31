@@ -38,7 +38,7 @@ const ConsultationForm = () => {
 
   return (
     <section className="py-20 bg-gray-50 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-1/2 h-full bg-dark hidden lg:block z-0"></div>
+      <div className="absolute top-0 left-0 w-1/2 h-full bg-primary/5 hidden lg:block z-0"></div>
       
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         <div className="bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col lg:flex-row">
@@ -134,7 +134,7 @@ const ConsultationForm = () => {
                 <textarea name="message" rows="4" value={formData.message} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all bg-gray-50 resize-none" placeholder="Tell us more about your travel plans..."></textarea>
               </div>
 
-              <button type="submit" disabled={loading} className="w-full bg-gradient-to-r from-accent to-accent-light hover:from-accent-light hover:to-accent text-white font-bold py-4 rounded-lg shadow-lg shadow-accent/30 transition-all flex items-center justify-center gap-2">
+              <button type="submit" disabled={loading} className="w-full bg-primary hover:bg-primary-dark text-white font-bold py-4 rounded-lg shadow-lg shadow-primary/30 transition-all flex items-center justify-center gap-2">
                 {loading ? 'Submitting...' : <><FaPaperPlane /> Submit Enquiry</>}
               </button>
             </form>

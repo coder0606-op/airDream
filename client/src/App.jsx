@@ -22,6 +22,7 @@ import ManageVisas from './admin/ManageVisas';
 import ManageActivities from './admin/ManageActivities';
 import ManageTestimonials from './admin/ManageTestimonials';
 import ManageEnquiries from './admin/ManageEnquiries';
+import ManagePopups from './admin/ManagePopups';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="activities" element={<ManageActivities />} />
           <Route path="testimonials" element={<ManageTestimonials />} />
           <Route path="enquiries" element={<ManageEnquiries />} />
+          <Route path="popups" element={<ManagePopups />} />
         </Route>
 
         <Route path="/*" element={

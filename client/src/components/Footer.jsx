@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaFacebookF, FaTwitter, FaInstagram, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaFacebookF, FaTiktok, FaInstagram, FaMapMarkerAlt } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <Link to="/" className="flex items-center gap-2 text-white font-bold text-2xl tracking-wide mb-4">
-              <img src="/images/logo.jpg" alt="Air Dream" className="h-10 w-10 rounded-full object-cover border border-primary/30" />
+              <img src="/images/logo.jpeg" alt="Air Dream" className="h-12 object-contain bg-white rounded-sm p-1" />
               <span>Air Dream</span>
             </Link>
             <p className="text-sm mb-4">Contact our Travel agent for customized holiday packages and visa assistance.</p>
@@ -24,9 +24,9 @@ const Footer = () => {
               <p><strong>Email:</strong> airdreamtraveltourism@gmail.com</p>
             </div>
             <div className="flex gap-4 mt-6">
-              <a href="#" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors text-white"><FaFacebookF /></a>
-              <a href="#" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors text-white"><FaTwitter /></a>
-              <a href="#" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors text-white"><FaInstagram /></a>
+              <a href="https://www.facebook.com/share/1DyCmLwg1h/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors text-white"><FaFacebookF /></a>
+              <a href="https://www.instagram.com/airdreamtraveltourism?igsh=dmxjbmlteXMzZHBi" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors text-white"><FaInstagram /></a>
+              <a href="https://www.tiktok.com/@airdreamtraveltourism?_r=1&_t=ZS-98OQiGq7znw" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors text-white"><FaTiktok /></a>
             </div>
           </div>
 
@@ -71,9 +71,9 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 pt-6 text-center text-xs text-gray-500">
+        {/* <div className="border-t border-gray-800 pt-6 text-center text-xs text-gray-500">
           <p>© {new Date().getFullYear()} Air Dream Travel & Tourism. All rights reserved.</p>
-        </div>
+        </div> */}
       </div>
     </footer>
   );

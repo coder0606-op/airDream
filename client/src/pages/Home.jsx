@@ -6,6 +6,7 @@ import TestimonialCard from '../components/TestimonialCard';
 import StatsSection from '../components/StatsSection';
 import ConsultationForm from '../components/ConsultationForm';
 import ScrollCarousel from '../components/ScrollCarousel';
+import PopupCarousel from '../components/PopupCarousel';
 import api from '../utils/api';
 import { FaStar } from 'react-icons/fa';
 
@@ -55,6 +56,7 @@ const Home = () => {
 
   return (
     <div>
+      <PopupCarousel />
       <HeroSlider />
       
       <ScrollCarousel title="Activities & Popular Tours">

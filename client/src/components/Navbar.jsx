@@ -12,9 +12,20 @@ const Navbar = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
+
     window.addEventListener('scroll', handleScroll);
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Lock body scroll when drawer is open
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : 'auto';
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -22,100 +33,157 @@ const Navbar = () => {
     { name: 'Visas', path: '/visas' },
     { name: 'Tours', path: '/tours' },
     { name: 'About Us', path: '/about' },
-    { name: 'Contact', path: '/contact' }
+    { name: 'Contact', path: '/contact' },
   ];
 
   const isActive = (path) => location.pathname === path;
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-dark/95 backdrop-blur-md shadow-lg py-3' : 'bg-dark/50 backdrop-blur-sm py-5'}`}>
-      <div className="container mx-auto px-4 md:px-8 flex justify-between items-center">
-        <Link to="/" className="flex items-center gap-2 text-white font-bold text-2xl tracking-wide group">
-          <img src="/images/logo.jpg" alt="Air Dream" className="h-10 w-10 rounded-full object-cover border border-primary/30 group-hover:border-primary transition-colors duration-300" />
-          <span>Air Dream</span>
-        </Link>
-
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
-          <ul className="flex gap-6">
-            {navLinks.map((link) => (
-              <li key={link.name}>
-                <Link
-                  to={link.path}
-                  className={`text-sm font-medium transition-colors hover:text-primary ${isActive(link.path) ? 'text-primary' : 'text-gray-200'}`}
-                >
-                  {link.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <Link to="/admin/login" className="text-gray-300 hover:text-primary transition-colors" title="Admin Login">
-            <FaUserShield size={18} />
+    <>
+      {/* Navbar */}
+      <nav
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+          scrolled
+            ? 'bg-slate-900/95 backdrop-blur-md shadow-lg'
+            : 'bg-slate-900/95 backdrop-blur-md'
+        }`}
+      >
+        <div className="container mx-auto px-4 md:px-8 h-16 flex justify-between items-center">
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-2 group">
+            <img src="/images/logo.jpeg" alt="Air Dream Travel & Tourism" className="h-12 object-contain bg-white rounded-sm p-1" />
+            <span className="text-white font-bold text-2xl tracking-wide">Air Dream</span>
           </Link>
-          <Link to="/contact" className="bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded-md font-semibold transition-colors shadow-lg shadow-primary/30">
-            Get a Quote
-          </Link>
-        </div>
 
-        {/* Mobile Toggle */}
-        <button className="md:hidden text-white p-2" onClick={() => setIsOpen(true)}>
-          <FaBars size={24} />
-        </button>
-      </div>
-
-      {/* Mobile Drawer */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'tween', duration: 0.3 }}
-            className="fixed inset-0 bg-dark z-50 flex flex-col md:hidden"
-          >
-            <div className="flex justify-between items-center p-5 border-b border-gray-800">
-              <span className="text-white font-bold text-xl flex items-center gap-2">
-                <img src="/images/logo.jpg" alt="Air Dream" className="h-8 w-8 rounded-full object-cover border border-primary/30" /> Air Dream
-              </span>
-              <button className="text-white p-2" onClick={() => setIsOpen(false)}>
-                <FaTimes size={24} />
-              </button>
-            </div>
-            <ul className="flex flex-col p-6 gap-6">
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center gap-8">
+            <ul className="flex gap-6">
               {navLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.path}
-                    onClick={() => setIsOpen(false)}
-                    className={`block text-lg font-medium ${isActive(link.path) ? 'text-primary' : 'text-gray-300'}`}
+                    className={`transition-colors ${
+                      isActive(link.path)
+                        ? 'text-primary-light'
+                        : 'text-gray-200 hover:text-primary-light'
+                    }`}
                   >
                     {link.name}
                   </Link>
                 </li>
               ))}
-              <li>
+            </ul>
+
+            <Link
+              to="/admin/login"
+              className="text-gray-300 hover:text-primary-light"
+            >
+              <FaUserShield size={18} />
+            </Link>
+
+            <Link
+              to="/contact"
+              className="bg-primary hover:bg-primary-dark text-white px-5 py-2 rounded-md font-semibold"
+            >
+              Get a Quote
+            </Link>
+          </div>
+
+          {/* Mobile Button */}
+          <button
+            onClick={() => setIsOpen(true)}
+            className="md:hidden text-white"
+          >
+            <FaBars size={24} />
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Drawer */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 bg-black/60 z-40"
+            />
+
+            {/* Drawer */}
+            <motion.div
+              initial={{ x: '-100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '-100%' }}
+              transition={{ duration: 0.3 }}
+              className="fixed top-0 left-0 h-screen w-72 bg-slate-900 z-50 flex flex-col shadow-2xl"
+            >
+              {/* Header */}
+              <div className="h-16 px-5 flex justify-between items-center border-b border-slate-700">
+                <div className="flex items-center gap-3">
+                  <img
+                    src="/images/logo.jpeg"
+                    alt="Air Dream"
+                    className="h-10 object-contain bg-white rounded-sm p-1"
+                  />
+                  <span className="text-white font-bold text-xl">
+                    Air Dream
+                  </span>
+                </div>
+
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="text-white"
+                >
+                  <FaTimes size={22} />
+                </button>
+              </div>
+
+              {/* Navigation */}
+              <div className="flex-1 overflow-y-auto py-4">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    to={link.path}
+                    onClick={() => setIsOpen(false)}
+                    className={`block px-6 py-4 text-lg transition ${
+                      isActive(link.path)
+                        ? 'bg-primary text-white'
+                        : 'text-gray-300 hover:bg-slate-800 hover:text-white'
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
+
+              {/* Bottom */}
+              <div className="border-t border-slate-700 p-5 space-y-4">
                 <Link
                   to="/contact"
                   onClick={() => setIsOpen(false)}
-                  className="block text-center mt-4 bg-primary text-white px-4 py-3 rounded-md font-semibold"
+                  className="block w-full text-center bg-primary hover:bg-primary-dark text-white py-3 rounded-lg font-semibold"
                 >
                   Get a Quote
                 </Link>
-              </li>
-              <li>
+
                 <Link
                   to="/admin/login"
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-center gap-2 text-gray-400 hover:text-primary text-sm mt-2 transition-colors"
+                  className="flex justify-center items-center gap-2 text-gray-400 hover:text-white"
                 >
-                  <FaUserShield /> Admin Login
+                  <FaUserShield />
+                  Admin Login
                 </Link>
-              </li>
-            </ul>
-          </motion.div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   );
 };
 
