@@ -165,9 +165,18 @@ const Navbar = () => {
                     {link.name}
                   </Link>
                 ))}
+                
+                {/* Admin Link for Mobile */}
+                <Link
+                  to="/admin/login"
+                  onClick={() => setIsOpen(false)}
+                  className={`block px-6 py-4 text-base font-medium transition border-l-4 border-l-transparent text-gray-700 hover:bg-gray-50 hover:text-primary flex items-center gap-3`}
+                >
+                  <FaUserShield className="text-gray-400" />
+                  Admin Login
+                </Link>
               </div>
 
-              {/* Bottom */}
               <div className="border-t border-gray-200 p-5 space-y-4">
                 <a
                   href="https://wa.me/971588338927"
@@ -179,15 +188,6 @@ const Navbar = () => {
                   <FaWhatsapp size={20} />
                   WhatsApp Us
                 </a>
-
-                <Link
-                  to="/admin/login"
-                  onClick={() => setIsOpen(false)}
-                  className="flex justify-center items-center gap-2 text-gray-400 hover:text-primary text-sm"
-                >
-                  <FaUserShield />
-                  Admin Login
-                </Link>
               </div>
             </motion.div>
           </>
