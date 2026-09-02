@@ -8,6 +8,7 @@ import WhatsAppFloat from './components/WhatsAppFloat';
 import Home from './pages/Home';
 import AllTours from './pages/AllTours';
 import TourDetails from './pages/TourDetails';
+import DealDetails from './pages/DealDetails';
 import AllVisas from './pages/AllVisas';
 import AllActivities from './pages/AllActivities';
 import About from './pages/About';
@@ -23,6 +24,7 @@ import ManageActivities from './admin/ManageActivities';
 import ManageTestimonials from './admin/ManageTestimonials';
 import ManageEnquiries from './admin/ManageEnquiries';
 import ManagePopups from './admin/ManagePopups';
+import ManageTravelDeals from './admin/ManageTravelDeals';
 
 function App() {
   return (
@@ -38,6 +40,7 @@ function App() {
           <Route path="testimonials" element={<ManageTestimonials />} />
           <Route path="enquiries" element={<ManageEnquiries />} />
           <Route path="popups" element={<ManagePopups />} />
+          <Route path="travel-deals" element={<ManageTravelDeals />} />
         </Route>
 
         <Route path="/*" element={
@@ -48,6 +51,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/tours" element={<AllTours />} />
                 <Route path="/tours/:id" element={<TourDetails />} />
+                <Route path="/travel-deals/:id" element={<DealDetails />} />
                 <Route path="/visas" element={<AllVisas />} />
                 <Route path="/activities" element={<AllActivities />} />
                 <Route path="/about" element={<About />} />

@@ -55,7 +55,7 @@ const ManageTestimonials = () => {
         : items.map(item => (
           <div key={item._id} className="bg-white rounded-xl p-5 shadow-sm border border-gray-100 relative group">
             <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity flex gap-1">
-              <button onClick={() => openEdit(item)} className="text-blue-500 hover:bg-blue-50 p-1.5 rounded"><FaEdit size={12} /></button>
+              <button onClick={() => openEdit(item)} className="text-primary hover:bg-primary/10 p-1.5 rounded"><FaEdit size={12} /></button>
               <button onClick={() => handleDelete(item._id)} className="text-red-400 hover:bg-red-50 p-1.5 rounded"><FaTrash size={12} /></button>
             </div>
             <div className="flex items-center gap-3 mb-3">
@@ -68,7 +68,7 @@ const ManageTestimonials = () => {
               </div>
             </div>
             <div className="flex gap-0.5 mb-2">
-              {[...Array(5)].map((_, i) => <FaStar key={i} className={i < item.rating ? 'text-star-green' : 'text-gray-200'} size={14} />)}
+              {[...Array(5)].map((_, i) => <FaStar key={i} className={i < item.rating ? 'text-gold' : 'text-gray-200'} size={14} />)}
             </div>
             <h4 className="font-semibold text-primary text-sm mb-1">{item.title}</h4>
             <p className="text-gray-500 text-xs line-clamp-3">{item.review}</p>
@@ -87,7 +87,7 @@ const ManageTestimonials = () => {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div><label className="block text-sm font-medium text-gray-700 mb-1">Rating</label>
-                  <div className="flex gap-1 mt-1">{[1,2,3,4,5].map(n => <button key={n} type="button" onClick={() => setForm({...form, rating: n})} className={`text-xl ${n <= form.rating ? 'text-star-green' : 'text-gray-300'}`}><FaStar /></button>)}</div>
+                  <div className="flex gap-1 mt-1">{[1,2,3,4,5].map(n => <button key={n} type="button" onClick={() => setForm({...form, rating: n})} className={`text-xl ${n <= form.rating ? 'text-gold' : 'text-gray-300'}`}><FaStar /></button>)}</div>
                 </div>
                 <div><label className="block text-sm font-medium text-gray-700 mb-1">Avatar Color</label>
                   <div className="flex gap-2 mt-1">{colors.map(c => <button key={c} type="button" onClick={() => setForm({...form, avatarColor: c})} className={`w-7 h-7 rounded-full border-2 ${form.avatarColor === c ? 'border-dark scale-110' : 'border-transparent'}`} style={{ backgroundColor: c }} />)}</div>

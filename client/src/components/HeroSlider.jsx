@@ -1,32 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaPlane, FaPassport, FaHotel, FaUmbrellaBeach } from 'react-icons/fa';
+import { FaWhatsapp, FaArrowRight } from 'react-icons/fa';
 
 const slides = [
   {
-    title: 'Discover Your Dream Destination',
-    subtitle: 'Experience the world with Air Dream Travel & Tourism. Premium tours, fast-track visas, and unforgettable adventures.',
+    title: 'Your Journey',
+    titleHighlight: 'Starts With Air Dream',
+    subtitle: 'Flights · Visas · Tours · Umrah — All in One Place',
     image: '/images/hero-dubai.jpg',
-    icon: <FaPlane />,
   },
   {
-    title: 'Fast Track Visa Processing',
-    subtitle: 'Get your visa approved quickly with our expert team. Tourist, Business & Transit visas for 50+ countries.',
+    title: 'Fast Track',
+    titleHighlight: 'Visa Processing',
+    subtitle: 'Get your visa approved quickly. Tourist, Business & Transit visas for 50+ countries.',
     image: '/images/desert-safari.jpg',
-    icon: <FaPassport />,
   },
   {
-    title: 'Luxury Hotel Bookings',
-    subtitle: 'From 5-star resorts to cozy boutique hotels, find the perfect stay for your dream vacation.',
+    title: 'Unforgettable',
+    titleHighlight: 'Dubai Adventures',
+    subtitle: 'Desert safaris, dhow cruises, city tours — create memories that last a lifetime.',
     image: '/images/burj-khalifa.jpg',
-    icon: <FaHotel />,
   },
   {
-    title: 'Unforgettable Adventures',
-    subtitle: 'Desert safaris, dhow cruises, city tours and more — create memories that last a lifetime.',
+    title: 'Premium Umrah',
+    titleHighlight: '& Holiday Packages',
+    subtitle: 'Complete Umrah packages with flights, hotels, and guided tours at competitive prices.',
     image: '/images/dhow-cruise.jpg',
-    icon: <FaUmbrellaBeach />,
   }
 ];
 
@@ -43,12 +43,12 @@ const HeroSlider = () => {
   const slide = slides[current];
 
   return (
-    <div className="relative h-screen w-full bg-dark flex items-center justify-center overflow-hidden">
+    <div className="relative h-[85vh] md:h-[90vh] w-full bg-primary flex items-center justify-center overflow-hidden">
       {/* Background Image with Crossfade */}
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
-          initial={{ opacity: 0, scale: 1.1 }}
+          initial={{ opacity: 0, scale: 1.05 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1.2 }}
@@ -58,83 +58,73 @@ const HeroSlider = () => {
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url(${slide.image})` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-dark/70 via-dark/50 to-dark/80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/50 to-primary/30" />
         </motion.div>
       </AnimatePresence>
 
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 z-[1] opacity-10">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff1a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff1a_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-      </div>
-
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center">
+      <div className="relative z-10 container mx-auto px-4 md:px-8">
         <AnimatePresence mode="wait">
           <motion.div
             key={current}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.8 }}
+            className="max-w-2xl"
           >
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full text-primary-light text-sm font-medium mb-6">
-              {slide.icon}
-              <span>Air Dream Travel & Tourism</span>
-            </div>
-
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight leading-tight max-w-4xl mx-auto">
-              {slide.title.split(' ').map((word, i) => (
-                <span key={i}>
-                  {i >= slide.title.split(' ').length - 2 ? (
-                    <span className="text-primary-light">{word} </span>
-                  ) : (
-                    <span>{word} </span>
-                  )}
-                </span>
-              ))}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
+              {slide.title}{' '}
+              <span className="text-gold">{slide.titleHighlight}</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
               {slide.subtitle}
             </p>
           </motion.div>
         </AnimatePresence>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="flex flex-col sm:flex-row gap-4"
         >
-          <Link to="/tours" className="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5">
-            Explore Tours
+          <Link
+            to="/activities"
+            className="bg-primary hover:bg-primary-dark text-white px-7 py-3.5 rounded-lg font-semibold text-base transition-all shadow-lg flex items-center gap-2 w-fit"
+          >
+            Explore Services
+            <FaArrowRight size={14} />
           </Link>
-          <Link to="/contact" className="border-2 border-white/50 hover:border-primary-light hover:text-primary-light text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all backdrop-blur-sm hover:-translate-y-0.5">
-            Get a Free Quote
-          </Link>
+          <a
+            href="https://wa.me/971588338927"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white/20 backdrop-blur-sm hover:bg-white/30 border border-white/40 text-white px-7 py-3.5 rounded-lg font-semibold text-base transition-all flex items-center gap-2 w-fit"
+          >
+            <FaWhatsapp size={18} />
+            Chat on WhatsApp
+          </a>
         </motion.div>
       </div>
 
       {/* Slide Indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+      <div className="absolute bottom-16 md:bottom-12 left-1/2 -translate-x-1/2 z-10 flex gap-2">
         {slides.map((_, idx) => (
           <button
             key={idx}
             onClick={() => setCurrent(idx)}
-            className={`h-1.5 rounded-full transition-all duration-500 ${idx === current ? 'w-8 bg-primary' : 'w-4 bg-white/40 hover:bg-white/60'}`}
+            className={`h-2 rounded-full transition-all duration-500 ${idx === current ? 'w-8 bg-gold' : 'w-3 bg-white/50 hover:bg-white/70'}`}
           />
         ))}
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 right-8 z-10 hidden md:block">
-        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-          <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-1.5 h-1.5 bg-primary rounded-full mt-2"
-          />
-        </div>
+      {/* Wave Divider */}
+      <div className="wave-divider z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80" preserveAspectRatio="none">
+          <path fill="#ffffff" d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80 Z" />
+        </svg>
       </div>
     </div>
   );

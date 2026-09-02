@@ -3,7 +3,7 @@ import api from '../utils/api';
 import toast from 'react-hot-toast';
 import { FaPlus, FaTimes, FaEdit, FaTrash } from 'react-icons/fa';
 
-const emptyActivity = { title: '', price: '', originalPrice: '', category: 'Adventure', rating: 4.0, duration: { days: 1, nights: 0 }, activities: '', imageUrl: '' };
+const emptyActivity = { title: '', price: '', originalPrice: '', category: 'Desert Safari', rating: 4.0, duration: { days: 1, nights: 0 }, activities: '', imageUrl: '' };
 
 const ManageActivities = () => {
   const [items, setItems] = useState([]);
@@ -49,11 +49,11 @@ const ManageActivities = () => {
       </div>
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
         <table className="w-full text-left border-collapse">
-          <thead><tr className="bg-gray-50 border-b border-gray-200">
+          <thead><tr className="bg-primary/5 border-b border-gray-200">
             <th className="p-4 font-semibold text-gray-600 text-sm">Title</th>
             <th className="p-4 font-semibold text-gray-600 text-sm">Category</th>
             <th className="p-4 font-semibold text-gray-600 text-sm">Rating</th>
-            <th className="p-4 font-semibold text-gray-600 text-sm">Price (INR)</th>
+            <th className="p-4 font-semibold text-gray-600 text-sm">Price (AED)</th>
             <th className="p-4 font-semibold text-gray-600 text-sm text-right">Actions</th>
           </tr></thead>
           <tbody>
@@ -71,7 +71,7 @@ const ManageActivities = () => {
                 <td className="p-4 text-yellow-500 font-semibold">★ {item.rating}</td>
                 <td className="p-4 font-semibold">{item.price}</td>
                 <td className="p-4 text-right">
-                  <button onClick={() => openEdit(item)} className="text-blue-500 hover:text-blue-700 mr-3 p-1"><FaEdit /></button>
+                  <button onClick={() => openEdit(item)} className="text-primary hover:text-primary-dark mr-3 p-1"><FaEdit /></button>
                   <button onClick={() => handleDelete(item._id)} className="text-red-400 hover:text-red-600 p-1"><FaTrash /></button>
                 </td>
               </tr>
@@ -87,11 +87,11 @@ const ManageActivities = () => {
             <form onSubmit={handleSubmit} className="p-6 space-y-4">
               <div><label className="block text-sm font-medium text-gray-700 mb-1">Title *</label><input required value={form.title} onChange={e => setForm({...form, title: e.target.value})} className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none" /></div>
               <div className="grid grid-cols-2 gap-4">
-                <div><label className="block text-sm font-medium text-gray-700 mb-1">Price (INR) *</label><input type="number" required value={form.price} onChange={e => setForm({...form, price: e.target.value})} className="w-full px-4 py-2.5 rounded-lg border border-gray-300 outline-none" /></div>
+                <div><label className="block text-sm font-medium text-gray-700 mb-1">Price (AED) *</label><input type="number" required value={form.price} onChange={e => setForm({...form, price: e.target.value})} className="w-full px-4 py-2.5 rounded-lg border border-gray-300 outline-none" /></div>
                 <div><label className="block text-sm font-medium text-gray-700 mb-1">Original Price</label><input type="number" value={form.originalPrice} onChange={e => setForm({...form, originalPrice: e.target.value})} className="w-full px-4 py-2.5 rounded-lg border border-gray-300 outline-none" /></div>
               </div>
               <div className="grid grid-cols-3 gap-4">
-                <div><label className="block text-sm font-medium text-gray-700 mb-1">Category</label><select value={form.category} onChange={e => setForm({...form, category: e.target.value})} className="w-full px-4 py-2.5 rounded-lg border border-gray-300 outline-none"><option>Adventure</option><option>Sightseeing</option><option>Entertainment</option><option>Cruise</option><option>Water Sports</option></select></div>
+                <div><label className="block text-sm font-medium text-gray-700 mb-1">Category</label><select value={form.category} onChange={e => setForm({...form, category: e.target.value})} className="w-full px-4 py-2.5 rounded-lg border border-gray-300 outline-none"><option>Desert Safari</option><option>City Tour</option><option>Abu Dhabi</option><option>Cruise</option><option>Adventure</option><option>Sightseeing</option><option>Entertainment</option><option>Water Sports</option></select></div>
                 <div><label className="block text-sm font-medium text-gray-700 mb-1">Days</label><input type="number" min="0" value={form.duration.days} onChange={e => setForm({...form, duration: {...form.duration, days: e.target.value}})} className="w-full px-4 py-2.5 rounded-lg border border-gray-300 outline-none" /></div>
                 <div><label className="block text-sm font-medium text-gray-700 mb-1">Nights</label><input type="number" min="0" value={form.duration.nights} onChange={e => setForm({...form, duration: {...form.duration, nights: e.target.value}})} className="w-full px-4 py-2.5 rounded-lg border border-gray-300 outline-none" /></div>
               </div>

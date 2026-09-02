@@ -38,7 +38,7 @@ const Dashboard = () => {
     { label: 'Visas', value: stats.visas, icon: <FaIdCard />, color: 'bg-purple-500', bg: 'bg-purple-50' },
     { label: 'Activities', value: stats.activities, icon: <FaRunning />, color: 'bg-amber-500', bg: 'bg-amber-50' },
     { label: 'Testimonials', value: stats.testimonials, icon: <FaStar />, color: 'bg-green-500', bg: 'bg-green-50' },
-    { label: 'Enquiries', value: stats.enquiries, icon: <FaEnvelope />, color: 'bg-primary', bg: 'bg-cyan-50', extra: stats.unread > 0 ? `${stats.unread} new` : null },
+    { label: 'Enquiries', value: stats.enquiries, icon: <FaEnvelope />, color: 'bg-primary', bg: 'bg-blue-50', extra: stats.unread > 0 ? `${stats.unread} new` : null },
   ];
 
   if (loading) return <div className="flex items-center justify-center h-64 text-gray-400">Loading dashboard...</div>;

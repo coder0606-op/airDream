@@ -13,7 +13,7 @@ const activityRoutes = require('./routes/activityRoutes');
 const testimonialRoutes = require('./routes/testimonialRoutes');
 const enquiryRoutes = require('./routes/enquiryRoutes');
 const popupRoutes = require('./routes/popupRoutes');
-
+const travelDealRoutes = require('./routes/travelDealRoutes');
 const app = express();
 
 // Connect to database
@@ -47,6 +47,7 @@ app.use('/api/activities', activityRoutes);
 app.use('/api/testimonials', testimonialRoutes);
 app.use('/api/enquiries', enquiryRoutes);
 app.use('/api/popups', popupRoutes);
+app.use('/api/travel-deals', travelDealRoutes);
 
 app.get('/', (req, res) => {
   res.send('Air Dream Travel & Tourism API is running...');

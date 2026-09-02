@@ -102,11 +102,11 @@ const ManageTours = () => {
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="bg-gray-50 border-b border-gray-200">
+            <tr className="bg-primary/5 border-b border-gray-200">
               <th className="p-4 font-semibold text-gray-600 text-sm">Title</th>
               <th className="p-4 font-semibold text-gray-600 text-sm">Category</th>
               <th className="p-4 font-semibold text-gray-600 text-sm">Duration</th>
-              <th className="p-4 font-semibold text-gray-600 text-sm">Price (INR)</th>
+              <th className="p-4 font-semibold text-gray-600 text-sm">Price (AED)</th>
               <th className="p-4 font-semibold text-gray-600 text-sm text-right">Actions</th>
             </tr>
           </thead>
@@ -131,7 +131,7 @@ const ManageTours = () => {
                 <td className="p-4 text-gray-600 text-sm">{tour.duration?.days}D {tour.duration?.nights}N</td>
                 <td className="p-4 font-semibold text-dark">{tour.price}</td>
                 <td className="p-4 text-right">
-                  <button onClick={() => openEdit(tour)} className="text-blue-500 hover:text-blue-700 mr-3 p-1"><FaEdit /></button>
+                  <button onClick={() => openEdit(tour)} className="text-primary hover:text-primary-dark mr-3 p-1"><FaEdit /></button>
                   <button onClick={() => handleDelete(tour._id)} className="text-red-400 hover:text-red-600 p-1"><FaTrash /></button>
                 </td>
               </tr>
@@ -159,7 +159,7 @@ const ManageTours = () => {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Price (INR) *</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Price (AED) *</label>
                   <input type="number" required value={form.price} onChange={e => setForm({...form, price: e.target.value})} className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none" />
                 </div>
                 <div>
