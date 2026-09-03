@@ -73,7 +73,7 @@ const TravelDeals = () => {
           {deals.map((deal, index) => (
             <Link 
               key={deal._id || index} 
-              to={`/travel-deals/${deal._id}`}
+              to={deal._id ? `/travel-deals/${deal._id}` : (deal.link || '#')}
               className="bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition flex flex-col relative"
             >
               <div className="relative">

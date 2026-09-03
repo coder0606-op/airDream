@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const VisaCard = ({ visa }) => {
-  const { country, flagImage, type, price, originalPrice, isFastTrack, getOnDate } = visa;
+  const { country, flagImage, type, price, originalPrice, currency, isFastTrack, getOnDate } = visa;
   
   return (
     <div className="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 hover:border-primary/30 flex flex-col items-center text-center group h-full">
@@ -38,9 +38,9 @@ const VisaCard = ({ visa }) => {
         <div className="text-[10px] text-gray-400 font-semibold mb-1">STARTING PRICE</div>
         <div className="flex justify-center items-end gap-2">
           {originalPrice && (
-            <span className="text-sm text-gray-400 line-through mb-1">INR {originalPrice}</span>
+            <span className="text-sm text-gray-400 line-through mb-1">{currency || 'AED'} {originalPrice}</span>
           )}
-          <span className="text-2xl font-black text-dark">INR {price}</span>
+          <span className="text-2xl font-black text-dark">{currency || 'AED'} {price}</span>
         </div>
       </div>
       

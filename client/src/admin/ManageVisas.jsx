@@ -3,7 +3,7 @@ import api from '../utils/api';
 import toast from 'react-hot-toast';
 import { FaPlus, FaTimes, FaEdit, FaTrash } from 'react-icons/fa';
 
-const emptyVisa = { country: '', type: 'Tourist', price: '', originalPrice: '', processingTime: '', isFastTrack: true, getOnDate: '', flagImage: '' };
+const emptyVisa = { country: '', type: 'Tourist', price: '', originalPrice: '', currency: 'AED', processingTime: '', isFastTrack: true, getOnDate: '', flagImage: '' };
 
 const ManageVisas = () => {
   const [visas, setVisas] = useState([]);
@@ -25,7 +25,7 @@ const ManageVisas = () => {
   const openAdd = () => { setEditing(null); setForm(emptyVisa); setShowModal(true); };
   const openEdit = (visa) => {
     setEditing(visa._id);
-    setForm({ country: visa.country, type: visa.type || 'Tourist', price: visa.price, originalPrice: visa.originalPrice || '', processingTime: visa.processingTime || '', isFastTrack: visa.isFastTrack !== false, getOnDate: visa.getOnDate || '', flagImage: visa.flagImage || '' });
+    setForm({ country: visa.country, type: visa.type || 'Tourist', price: visa.price, originalPrice: visa.originalPrice || '', currency: visa.currency || 'AED', processingTime: visa.processingTime || '', isFastTrack: visa.isFastTrack !== false, getOnDate: visa.getOnDate || '', flagImage: visa.flagImage || '' });
     setShowModal(true);
   };
 
@@ -57,7 +57,7 @@ const ManageVisas = () => {
             <th className="p-4 font-semibold text-gray-600 text-sm">Country</th>
             <th className="p-4 font-semibold text-gray-600 text-sm">Type</th>
             <th className="p-4 font-semibold text-gray-600 text-sm">Fast Track</th>
-            <th className="p-4 font-semibold text-gray-600 text-sm">Price (AED)</th>
+            <th className="p-4 font-semibold text-gray-600 text-sm">Price</th>
             <th className="p-4 font-semibold text-gray-600 text-sm text-right">Actions</th>
           </tr></thead>
           <tbody>
@@ -68,7 +68,7 @@ const ManageVisas = () => {
                 <td className="p-4 font-medium text-dark">{v.country}</td>
                 <td className="p-4"><span className="bg-coral/10 text-coral text-xs font-semibold px-2 py-1 rounded-full">{v.type}</span></td>
                 <td className="p-4">{v.isFastTrack ? <span className="bg-primary/10 text-primary text-xs font-semibold px-2 py-1 rounded-full">Yes</span> : <span className="text-gray-400 text-sm">No</span>}</td>
-                <td className="p-4 font-semibold">{v.price}</td>
+                <td className="p-4 font-semibold">{v.currency || 'AED'} {v.price}</td>
                 <td className="p-4 text-right">
                   <button onClick={() => openEdit(v)} className="text-primary hover:text-primary-dark mr-3 p-1"><FaEdit /></button>
                   <button onClick={() => handleDelete(v._id)} className="text-red-400 hover:text-red-600 p-1"><FaTrash /></button>
@@ -88,7 +88,9 @@ const ManageVisas = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div><label className="block text-sm font-medium text-gray-700 mb-1">Type</label>
                   <select value={form.type} onChange={e => setForm({...form, type: e.target.value})} className="w-full px-4 py-2.5 rounded-lg border border-gray-300 outline-none"><option>Tourist</option><option>Business</option><option>Transit</option></select></div>
-                <div><label className="block text-sm font-medium text-gray-700 mb-1">Price (AED) *</label><input type="number" required value={form.price} onChange={e => setForm({...form, price: e.target.value})} className="w-full px-4 py-2.5 rounded-lg border border-gray-300 outline-none" /></div>
+                <div><label className="block text-sm font-medium text-gray-700 mb-1">Currency</label>
+                  <select value={form.currency} onChange={e => setForm({...form, currency: e.target.value})} className="w-full px-4 py-2.5 rounded-lg border border-gray-300 outline-none"><option value="AED">AED</option><option value="USD">USD</option><option value="INR">INR</option></select></div>
+                <div><label className="block text-sm font-medium text-gray-700 mb-1">Price *</label><input type="number" required value={form.price} onChange={e => setForm({...form, price: e.target.value})} className="w-full px-4 py-2.5 rounded-lg border border-gray-300 outline-none" /></div>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div><label className="block text-sm font-medium text-gray-700 mb-1">Original Price</label><input type="number" value={form.originalPrice} onChange={e => setForm({...form, originalPrice: e.target.value})} className="w-full px-4 py-2.5 rounded-lg border border-gray-300 outline-none" /></div>

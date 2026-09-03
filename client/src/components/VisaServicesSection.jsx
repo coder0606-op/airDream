@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { FaWhatsapp } from 'react-icons/fa';
 
 const visas = [
-  { id: 1, country: 'Saudi Arabia', type: 'Multiple Entry Visa', image: '/images/passport-saudi.jpg', link: '/visas', isWhatsapp: false },
-  { id: 2, country: 'Qatar', type: 'Visit Visa', image: '/images/passport-qatar.jpg', link: '/visas', isWhatsapp: false },
-  { id: 3, country: 'Oman', type: 'Visit Visa', image: '/images/passport-oman.jpg', link: '/visas', isWhatsapp: false },
-  { id: 4, country: 'UAE', type: 'Visit Visa', image: '/images/passport-uae.jpg', link: '/visas', isWhatsapp: false },
-  { id: 5, country: 'Pakistan / India', type: 'Visa Services', image: '/images/service-visit-visas.jpg', link: '/visas', isWhatsapp: false },
+  { id: 1, country: 'Saudi Arabia', type: 'Multiple Entry Visa', price: '450', currency: 'AED', image: '/images/passport-saudi.jpg', link: '/visas', isWhatsapp: false },
+  { id: 2, country: 'Qatar', type: 'Visit Visa', price: '350', currency: 'AED', image: '/images/passport-qatar.jpg', link: '/contact', isWhatsapp: false },
+  { id: 3, country: 'Oman', type: 'Visit Visa', price: '250', currency: 'AED', image: '/images/passport-oman.jpg', link: '/contact', isWhatsapp: false },
+  { id: 4, country: 'UAE', type: 'Visit Visa', price: '350', currency: 'AED', image: '/images/passport-uae.jpg', link: '/contact', isWhatsapp: false },
+  { id: 5, country: 'Pakistan / India', type: 'Visa Services', price: '200', currency: 'AED', image: '/images/service-visit-visas.jpg', link: '/contact', isWhatsapp: false },
   { id: 6, country: 'WhatsApp Inquiry', type: 'Get Instant Help', link: 'https://wa.me/971588338927', isWhatsapp: true },
 ];
 
@@ -33,7 +33,13 @@ const VisaServicesSection = () => {
                   <img src={visa.image} alt={visa.country} className="max-h-full max-w-full object-contain" />
                 </div>
                 <h3 className="text-lg font-bold text-[#0a2351] mb-1">{visa.country}</h3>
-                <p className="text-sm text-gray-500 mb-6">{visa.type}</p>
+                <p className="text-sm text-gray-500 mb-2">{visa.type}</p>
+                {visa.price && (
+                  <div className="text-xl font-black text-[#0a2351] mb-6">
+                    <span className="text-sm font-semibold text-gray-400 mr-1">From</span>
+                    {visa.currency} {visa.price}
+                  </div>
+                )}
                 <div className="mt-auto">
                   <Link to={visa.link} className="inline-block bg-primary text-white font-medium rounded-lg px-6 py-2 hover:opacity-90 transition-opacity">
                     Apply Now
