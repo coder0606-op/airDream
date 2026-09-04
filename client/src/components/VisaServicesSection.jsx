@@ -1,17 +1,55 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaWhatsapp } from 'react-icons/fa';
+import api from '../utils/api';
 
-const visas = [
+const fallbackVisas = [
   { id: 1, country: 'Saudi Arabia', type: 'Multiple Entry Visa', price: '450', currency: 'AED', image: '/images/passport-saudi.jpg', link: '/visas', isWhatsapp: false },
   { id: 2, country: 'Qatar', type: 'Visit Visa', price: '350', currency: 'AED', image: '/images/passport-qatar.jpg', link: '/contact', isWhatsapp: false },
   { id: 3, country: 'Oman', type: 'Visit Visa', price: '250', currency: 'AED', image: '/images/passport-oman.jpg', link: '/contact', isWhatsapp: false },
   { id: 4, country: 'UAE', type: 'Visit Visa', price: '350', currency: 'AED', image: '/images/passport-uae.jpg', link: '/contact', isWhatsapp: false },
   { id: 5, country: 'Pakistan / India', type: 'Visa Services', price: '200', currency: 'AED', image: '/images/service-visit-visas.jpg', link: '/contact', isWhatsapp: false },
-  { id: 6, country: 'WhatsApp Inquiry', type: 'Get Instant Help', link: 'https://wa.me/971588338927', isWhatsapp: true },
 ];
 
+const whatsappCard = { id: 'whatsapp', country: 'WhatsApp Inquiry', type: 'Get Instant Help', link: 'https://wa.me/971588338927', isWhatsapp: true };
+
 const VisaServicesSection = () => {
+  const [visas, setVisas] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchVisas = async () => {
+      try {
+        const res = await api.get('/visas');
+        if (Array.isArray(res.data) && res.data.length > 0) {
+          const topVisas = res.data.slice(0, 5).map(v => ({
+            id: v._id,
+            country: v.country,
+            type: v.type || 'Visa',
+            price: v.price,
+            currency: v.currency || 'AED',
+            image: v.flagImage || '/images/service-visit-visas.jpg',
+            link: '/contact',
+            isWhatsapp: false
+          }));
+          setVisas([...topVisas, whatsappCard]);
+        } else {
+          setVisas([...fallbackVisas, whatsappCard]);
+        }
+      } catch (err) {
+        console.error('Error fetching visas:', err);
+        setVisas([...fallbackVisas, whatsappCard]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchVisas();
+  }, []);
+
+  if (loading) {
+    return <section className="bg-gray-50 py-16"><div className="container mx-auto px-4 text-center text-gray-500">Loading popular visas...</div></section>;
+  }
+
   return (
     <section className="bg-gray-50 py-16">
       <div className="container mx-auto px-4">
